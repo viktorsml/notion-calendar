@@ -1,0 +1,71 @@
+@mixin box-sizing($type) {
+  -webkit-box-sizing: $type;
+  -moz-box-sizing: $type;
+  -ms-box-sizing: $type;
+  box-sizing: $type;
+}
+
+@mixin rectangle ($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin circle ($size) {
+  @include rectangle($width: $size, $height: $size);
+  border-radius: 100%;
+}
+
+@mixin coverParent {
+  @include rectangle($width: 100%, $height: 100%);
+}
+
+@mixin responsiveContainer($addPadding: true) {
+  position: relative;
+  max-width: var(--website-max-width);
+  width: 100%;
+  margin: 0 auto;
+  @if $addPadding {
+    padding: 0 var(--website-padding);
+  }
+}
+
+@mixin hideText {
+  text-decoration: none;
+  color: transparent;
+  font-size: 0;
+}
+
+@mixin initializeCorePage {
+  display: block;
+  height: 100%;
+  min-height: fit-content;
+}
+
+@mixin mat-icon-size($size) {
+  @include rectangle($width: $size, $height: $size);
+  font-size: $size;
+}
+
+@mixin linearGradientDual($topColor, $bottomColor, $angle) {
+  background: $bottomColor;
+  background: -moz-linear-gradient($angle, $topColor 0%, $bottomColor 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, $topColor), color-stop(100%, $bottomColor));
+  background: -webkit-linear-gradient($angle, $topColor 0%, $bottomColor 100%);
+  background: -o-linear-gradient($angle, $topColor 0%, $bottomColor 100%);
+  background: -ms-linear-gradient($angle, $topColor 0%, $bottomColor 100%);
+  background: linear-gradient($angle, $topColor 0%, $bottomColor 100%);
+}
+
+@mixin linearGradient($color, $darkenPercentage: 10%, $angle: 135deg) {
+  @include linearGradientDual($color, darken($color, $darkenPercentage), $angle);
+}
+
+@mixin linearGradientBackground($color, $secondColor, $angle: 135deg) {
+  @include linearGradientDual($color, $secondColor, $angle);
+}
+
+@mixin linearGradientText($topColor, $bottomColor, $angle) {
+  @include linearGradientDual($topColor, $bottomColor, $angle);
+  color: transparent;
+  background-clip: text;
+}

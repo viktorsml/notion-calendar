@@ -1,1 +1,104 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'scss/normalize';
+@import 'scss/variables';
+@import 'scss/mixins';
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import '~@fullcalendar/timegrid/main.css';
+
+html {
+  @include box-sizing(border-box);
+}
+
+*,
+*:before,
+*:after {
+  @include box-sizing(inherit);
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  @include coverParent;
+  font-family: var(--font-default);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-background);
+  padding: var(--website-padding);
+}
+
+full-calendar {
+  color: var(--color-title-white);
+}
+
+.fc-button-primary {
+  font-size: 14px;
+  text-transform: capitalize;
+  background-color: var(--color-background);
+  border: solid 1px var(--color-grey);
+  color: var(--color-title-white);
+
+  &:disabled {
+    color: var(--color-grey);
+    background-color: var(--color-background);
+    border-color: var(--color-grey);
+  }
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-grey-hover);
+    border-color: var(--color-grey);
+  }
+}
+
+th.fc-day-header {
+  padding: 10px 0px;
+  border: solid 1px var(--color-grey);
+}
+
+td.fc-head-container,
+td.fc-widget-content {
+  border: solid 1px var(--color-grey);
+}
+
+.fc-unthemed td.fc-today {
+  background: #393d40;
+}
+
+.fc-unthemed .fc-divider {
+  background: var(--color-grey);
+  border-color: var(--color-grey);
+}
+
+.fc-unthemed th {
+  border-color: var(--color-grey);
+}
+
+td.fc-axis.fc-widget-content {
+  font-size: 13px;
+}
+
+.fc-time-grid .fc-slats td {
+  height: 1.7em;
+}
+
+.fc-toolbar h2 {
+  font-size: 1.3em;
+}
+
+.gcal-event {
+  background: rgb(63, 68, 71);
+  border-radius: 3px;
+  box-shadow: rgba(15, 15, 15, 0.2) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 2px 4px;
+  border-color: var(--color-dark-grey);
+  padding: 7px 8px;
+  margin: 2px;
+
+  .fc-time {
+    color: #c7c7c7;
+    margin-bottom: 2px;
+    display: block;
+  }
+}
