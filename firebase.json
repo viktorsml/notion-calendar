@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site": "notion-calendar",
+    "public": "dist/notion-calendar",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
